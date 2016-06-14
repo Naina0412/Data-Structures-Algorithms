@@ -1,0 +1,30 @@
+#Author : Naina Chaturvedi
+#Program : To implement RadixSort
+
+#!/usr/bin/python
+
+def radix_sort(random_list):
+    len_random_list = len(random_list)   #length of randon list
+    modulus = 10                         #Radix
+    div = 1                              #placement
+    while True:
+        # empty array, [[] for i in range(10)]
+        new_list = [list() for _ in range(modulus)]   #Make as many buckets as there are numbers in the list
+        for value in random_list:                     #The first element in list
+            least_digit = value % modulus             #mod operation on the first element
+            least_digit //= div                       #div the mod answer by div
+            new_list[least_digit].append(value)       #Put the value calculated in right bucket
+        modulus = modulus * 10
+        div = div * 10
+
+        if len(new_list[0]) == len_random_list:    #The length of the first element of bucket is if equal then return the first element of the new list
+            return new_list[0]
+
+        random_list = []                       #Create another list and append the element
+        rd_list_append = random_list.append
+        for x in new_list:
+            for y in x:
+                rd_list_append(y)
+
+random_data = [67,1,10,34,2,83,4,5,19,23,12,78,6,0]
+print (radix_sort(random_data))

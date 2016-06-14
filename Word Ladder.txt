@@ -1,0 +1,186 @@
+#Word ladder
+#------------------------
+#Author : Naina Chaturvedi
+
+ 
+
+from bfs2 import Queue, bfs, getPath
+import sys
+
+class Node:
+
+    def __init__(self, name):
+        self.name = name
+        self.neighbours = []
+
+    __slots__ = ('name', 'neighbours')
+
+    def __str__(self):
+        result = self.name + ' : '
+        for n in self.neighbours:
+            result += n.name + ', '
+            print(result)
+        return result[:-1]
+
+
+def buildWordGraph(file):
+    w = {}
+    f = open(file)
+    words = f.read().split('\n') # Splitting the word indicator \n
+    #print(words)  #Words in splitted form would be printed
+
+    for word in words:
+
+        for i in range(len(word)):
+            wcard = word[:i] + '*' + word[i + 1:]
+            if wcard in w:
+                #print (w)
+                w[wcard].append(word)
+            else:
+                w[wcard] = [word]
+
+    for key in w:
+        wordlist = w[key]
+        #print("wordlist",wordlist)
+        for w1 in wordlist:
+            for w2 in wordlist:
+                if w1 != w2:
+                    inputGraph(w1, w2)
+
+
+def inputGraph(word1, word2):
+
+    if word1 not in Graph:
+        node = Node(word1)
+        node.neighbours.append(Node(word2))
+        Graph[word1] = node
+    else:
+
+        neighbours = Graph[word1].neighbours
+
+        if word2 not in [x.name for x in neighbours]:
+            neighbours.append(Node(word2))
+
+    if word2 not in Graph:
+        node = Node(word2)
+        node.neighbours.append(Node(word1))
+        Graph[word2] = node
+    else:
+
+        neighbours = Graph[word2].neighbours
+
+        if word1 not in [x.name for x in neighbours]:
+            neighbours.append(Node(word1))
+
+
+if __name__ == '__main__':
+
+    Graph = {}
+
+    #file="/usr/share/dict/words"
+    file="words"
+
+    buildWordGraph(file) 
+
+    """ Enter Input here or pass as command line args """
+
+    word1 = 'help'
+    word2 = 'pulp'
+
+
+    if len(sys.argv) > 1:
+
+
+        word1=sys.argv[1]
+        word2=sys.argv[2]
+
+    if word1 in Graph:
+
+        start = Graph[word1]
+        
+        if word2 in Graph:
+            finish=Graph[word2]
+            predecessors = bfs(start, finish, Graph)
+            path = getPath(start, finish, predecessors) 
+            str = ''
+
+            for p in path:
+
+                str += p + ' -> '
+
+            print (str[:-3])
+	    
+    	
+        else:
+             print("Word2 not in Graph") 
+
+	
+    else:
+        print("Word1 not in Graph")
+
+    
+--------------------------------------------------
+BFS
+--------------------------------------------------
+__author__ = 'joseph'
+
+
+
+class Queue():
+    def __init__(self):
+        self.queue=[]
+
+    def enqueue(self,item):
+        self.queue.append(item)
+
+    def dequeue(self):
+        return self.queue.pop(0)
+
+    def __str__(self):
+        return str(self.queue)
+
+    def empty(self):
+        return self.queue==[]
+
+def bfs(start,finish,Graph):
+    parents={}
+    q=Queue()
+    q.enqueue(start)
+    parents[start.name]=None
+
+    while(not q.empty()):
+        node=q.dequeue()
+        for neighbour in node.neighbours:
+            n=neighbour.name
+
+            if n not in parents:
+                parents[n]=node.name
+                if n==finish.name:
+                    return parents
+                q.enqueue(Graph[neighbour.name])
+
+    return parents
+
+
+def getPath(start,finish,parents):
+    finish=finish.name
+    path=[finish]
+    if finish in parents:
+        node=parents[finish]
+        while(node!=start.name):
+            path.append(node)
+            node=parents[node]
+    else:
+        "No Path "
+
+    path.append(start.name)
+
+    return path[::-1]
+
+
+
+
+			
+
+			
+			

@@ -1,0 +1,743 @@
+'''
+#Problem : To find max of three numbers
+class max:
+
+    def findmax(self,a,b,c):
+
+        if (a==b==c):
+            print("All the numbers are same and the max is ",a)
+            return a
+        else :
+            if a>b:
+                if a>c:
+                    return a
+                else:
+                    return c
+            else :
+                if b>c:
+                    if b>a:
+                        return b
+                    else:
+                        return a
+                else :
+                    if c>a:
+                     return c
+                    else:
+                     return a
+
+if __name__=='__main__':
+    a=input(print("Enter the first  number :"))
+    b=input(print("Enter the second number:"))
+    c=input(print("Enter the third number:"))
+    maxOb=max()
+    result=maxOb.findmax(a,b,c)
+    print("The max no is :",result)
+'''
+#--------------------------------------------------------------------------
+#Problem statement : To calculate length of given list and string without using len function
+'''
+class length:
+    def calcLenls(self,ds):
+
+        if (ds==[]):
+            print("The list given by the user is empty")
+            return 0
+        else :
+            count=0
+            for i in ds:
+                #print(i)
+                count=count+1
+            return count
+
+    def calcLenstr(self,ds):
+
+        if (ds==""):
+            print("The list/string given by the user is empty")
+            return 0
+        else :
+            count=0
+            for i in ds:
+               count=count+1
+            return count
+
+if __name__=='__main__':
+    ls=['physics',1,4,2,'apple','facebook']
+    str1='Naina and Vinay'
+
+    lengthOb=length()
+    resultls=lengthOb.calcLenls(ls)
+    resultstr=lengthOb.calcLenstr(str1)
+    print("The length of list is :",resultls)
+    print("The length of string is (respectively):",resultstr)
+
+'''
+#-------------------------------------------------------------------------------
+#Problem Statement : To conclude if the given one character string is vowel or not
+'''
+
+class vowel :
+    def decideVowel(self,inputchar):
+        if len(inputchar)>1 or len(inputchar)==0:
+            return None
+        else:
+            if inputchar=='a'or inputchar=='e'or inputchar=='i'or inputchar=='o'or inputchar=='u':
+                return True
+            else :
+                return False
+
+if __name__=='__main__':
+
+    inputchar=str(input("Enter the character/string of one character:"))
+    #inputstr='a'
+    vowelOb=vowel()
+    result=vowelOb.decideVowel(inputchar)
+    if result==True or result==1:
+        print ("The input character is vowel")
+    elif result==False or result==0:
+        print("The input character is not a vowel")
+    else :
+        print("Please restrict the input character length to 1")
+'''
+#------------------------------------------------------------------------------------
+#Problem Statement : To translate the string into given string based on letter present in it.
+'''
+import string
+class translate:
+
+    def decideVowel(self,inputchar):
+        if len(inputchar)>1 or len(inputchar)==0:
+            return None
+        else:
+            if inputchar=='a'or inputchar=='e'or inputchar=='i'or inputchar=='o'or inputchar=='u':
+                return True
+            else :
+                return False
+
+    def translateString(self,str1):
+
+        if len(str1)==0:
+            return None
+        else:
+            str2=' '
+            trOb=translate()
+            non_alphabetics = string.punctuation+string.whitespace+string.digits
+            for i in str1:
+                str2+=i
+                if  not trOb.decideVowel(i):
+                    if  i not in non_alphabetics:
+                        str2+='o'+i
+            return str2
+
+if __name__=='__main__':
+    userString=str(input("Enter your string:"))
+    resultString=''
+    translateOb=translate()
+    resultString=translateOb.translateString(userString)
+    print ("The final string is : ",resultString)
+'''
+#------------------------------------------------------------------------------
+'''
+#Problem Statement : To sum and multiply all the numbers in the list
+
+class operations:
+    def calSum(self,ls):
+        if len(ls)==0:
+            return -1
+        else:
+            #count=0
+            sum=0
+            if len(ls)>1:
+                for i in ls:
+                    sum+=i
+            return sum
+    def calmul(self,ls):
+        if len(ls)==0:
+            return -1
+        else:
+            #count=0
+            mul=1
+            if len(ls)>1:
+                for i in ls:
+                    mul*=i
+            return mul
+
+
+
+if __name__=='__main__':
+    ls=[4,3,6,1]
+    operationsOb=operations()
+    resultSum=operationsOb.calSum(ls)
+    print("The sum of all the nos of the list is :",resultSum)
+    resultMul=operationsOb.calmul(ls)
+    print("The mul of all the nos of the list is :",resultMul)
+'''
+#--------------------------------------------------------------------------
+#Problem Statement : To get reverse of a string
+'''
+class reverse:
+    def revString(self,ustring):
+        str2=""
+        length=len(ustring)
+        for i in range(0,length):
+            str2+=ustring[length-i-1]
+        return str2
+
+    def isempty(self,str1):
+        if len(str1)==0:
+         return 0
+if __name__=='__main__':
+    str1=[]
+    userString=input("Enter the string :")
+    revOb=reverse()
+    checkEmpty=revOb.isempty(userString)
+    if checkEmpty!=0:
+
+        str1=revOb.revString(userString)
+        print("The reversed string is ",str1)
+
+    else :
+        print("The entered string is empty")
+
+'''
+#-------------------------------------------------------------------
+#Problem Statement : To find if the given string is a  palindrome
+'''
+
+class palindrome:
+    def checkPalindrome(self,uString):
+        if len(uString)==0:
+            return -1
+        else :
+            length=len(uString)
+            if len(uString)>=1:
+                for i in range(0,length):
+                    if uString[i]==uString[length-i-1]:
+                        return True
+                    else:
+                        return False
+
+if __name__=='__main__':
+    userString=input("Enter the string:")
+    palindromeOb=palindrome()
+    result=palindromeOb.checkPalindrome(userString)
+    if result==True or result==1:
+        print("The entered string is palindrome")
+    elif result==False or result==0:
+        print("The entered string isn't palindrome")
+    else :
+        print ("The entered string is empty")
+'''
+#-----------------------------------------------------------------------------------
+#Problem Statement : To check member ship without using in operator
+'''
+class membership:
+    def checkmemberShip(self,ls,member):
+        for i in ls:
+            if i==member:
+                return True
+
+
+    def checklength(self,ls):
+        if len(ls)==0:
+            return 0
+        else : return 1
+
+if __name__=='__main__':
+    ls=['1','3','4','5','6','err','physics','lobby','3.5']
+    member=str(input("Enter the member you want to check the member ship for:"))
+    membershipOb=membership()
+    lencheck=membershipOb.checklength(ls)
+    if lencheck>0:
+     result=membershipOb.checkmemberShip(ls,member)
+     if result==True or result==1:
+        print("It is the member of the list")
+     else :
+         print("The element is not the member of the list")
+
+'''
+#---------------------------------------------------------------------------------
+#Problem Statement : To check if there is atleast one common element in the two passed lists
+'''
+class overlap:
+    def checkCommon(self,list1,list2):
+      count=0
+      for i in list1:
+          for j in list2:
+              if i==j:
+               return True
+
+      return False
+
+
+    def checkEmpty(self,ls):
+        if len(ls)==0:
+            return 0
+        else:
+            return 1
+
+
+
+if __name__=='__main__':
+    ls1=['5','6','physics','3.5']
+    ls2=['0','3','maths','4.5','64','physics1']
+    overlapOb=overlap()
+    chlenList1=overlapOb.checkEmpty(ls1)
+    chlenList2=overlapOb.checkEmpty(ls2)
+    if chlenList1>0:
+        if chlenList2>0:
+            result=overlapOb.checkCommon(ls1,ls2)
+            if result==True or result==1:
+                print("There is a common element between list1 and list2")
+            else :
+                print("There is no common element between list 1 and list 2")
+        else:
+            print("The list is empty")
+    else:
+        print("the list is empty")
+'''
+#-------------------------------------------------------------------------------------------------
+#Problem statement : To generate n chars
+'''
+
+class generatenChar:
+    def genNChar(self,num,chr):
+        str2=""
+        str2=chr*num
+        return str2
+
+    def checkno(self,no):
+        if no>0:
+         return 1
+        else:
+            return 0
+
+    def checkCharlen(self,chr):
+        if len(chr)>0:
+            return 1
+        else :
+            return 0
+
+if __name__=='__main__':
+    chr=input("Enter the character:")
+    no=int(input("Enter the number of times you want the character to be generated:"))
+    generatenCharOb=generatenChar()
+    checkNo=generatenCharOb.checkno(no)
+    checkChar=generatenCharOb.checkCharlen(chr)
+    if checkChar >0:
+        if checkNo>0:
+            str1=generatenCharOb.genNChar(no,chr)
+            print("The resultant string generated is : ",str1)
+        else :
+            print("The no of string generated is zero")
+    else:
+        print("No input char")
+
+'''
+#--------------------------------------------------------------------------------------------
+#Problem statement : To print histogram
+'''
+class histogram :
+    def printHistogram(self,lsH):
+        for i in lsH:
+            print("*" * i)
+
+    def checkls(self,lsH):
+        if len(lsH)>0:
+         return 1
+        else:
+            return 0
+
+
+if __name__=='__main__':
+    lshistogram=[5,6,7,20]
+    histogramOb=histogram()
+    checklsH=histogramOb.checkls(lshistogram)
+    if checklsH>0:
+        histogramOb.printHistogram(lshistogram)
+    else:
+        print("The list is empty")
+'''
+#----------------------------------------------------------------------------
+#Problem Statement : Return the max no in the list
+'''
+class max:
+    def getLargest(self,ls):
+        j=1
+        for i in ls:
+            for j in ls:
+              if i < j:
+               return j
+            return i
+
+    def checklength(self,ls):
+        if len(ls)>0:
+            return 1
+        else:
+         return 0
+
+
+
+if __name__=='__main__':
+    ls=[7611174838835675673949,3,100,5,9,0,2,101,87,19924767374]
+    maxOb=max()
+    chcklen=maxOb.checklength(ls)
+    if chcklen>0:
+        largestNo=maxOb.getLargest(ls)
+        print("The largest no is : ",largestNo)
+    else:
+        print("The list is empty")
+'''
+#----------------------------------------------------------------------------
+#Problem Statement : Map list of words to list of numbers which shows length of words
+'''
+class mappingWordstoInt:
+
+    def mapWI(self,ls):
+        ls2=[]
+        for i in ls:
+            count=0
+            #print(i)
+            for j in i:
+                #print (j)
+                count=count+1
+            ls2.append(count)
+            print(count)
+        return ls2
+
+
+    def checkLength(self,ls):
+        if len(ls)>0:
+            return 1
+        return 0
+
+if __name__=='__main__':
+    ls=['physics','maths','hindi','nanotechnology']
+    mappingWordstoIntOb=mappingWordstoInt()
+    checkLengthList=mappingWordstoIntOb.checkLength(ls)
+    if (checkLengthList)>0:
+        resultList=mappingWordstoIntOb.mapWI(ls)
+        print("The numbers list is :",resultList)
+    else:
+        print("The list is empty")
+'''
+#----------------------------------------------------------------------------------
+#Problem statement : To find the longest word out of the list of the words given
+'''
+class mappingWordstoInt:
+
+    def mapWI(self,ls):
+        ls2=[]
+        for i in ls:
+            count=0
+            #print(i)
+            for j in i:
+                #print (j)
+                count=count+1
+            ls2.append(count)
+            print(count)
+        return ls2
+
+    def findLongest(self,ls):
+        j=1
+        for i in ls:
+            for j in ls:
+             if i<j:
+              return j
+        return i
+
+    def checkLength(self,ls):
+        if len(ls)>0:
+            return 1
+        return 0
+
+if __name__=='__main__':
+    ls=['physics','maths','hindi','nanotechnology']
+    mappingWordstoIntOb=mappingWordstoInt()
+    checkLengthList=mappingWordstoIntOb.checkLength(ls)
+    if (checkLengthList)>0:
+        resultList=mappingWordstoIntOb.mapWI(ls)
+        print("The numbers list is :",resultList)
+        lengthLongest=mappingWordstoIntOb.findLongest(resultList)
+        print("The length of the longest word is : ",lengthLongest)
+    else:
+        print("The list is empty")
+'''
+#------------------------------------------------------------------------------------------
+#Problem Statement : To filter the words from the lists which are longer than the given integer
+'''
+class filterLongWords:
+    def longWords(self,ls,no):
+        ls2=[]
+        counter=0
+        ls3=[]
+        for i in ls:
+            count=0
+            for j in i:
+                count=count+1
+            if count>=no:
+                ls3.append(i)
+        return ls3
+    def checkLength(self,ls):
+        if len(ls)>0:
+            return 1
+        return 0
+
+if __name__=='__main__':
+    ls=['physics','maths','history','geography','botany','science']
+    num=int(input("Enter the number:"))
+    filterLongWordsOb=filterLongWords()
+    checkLengthList=filterLongWordsOb.checkLength(ls)
+    if checkLengthList>0:
+        lsLongerWord=filterLongWordsOb.longWords(ls,num)
+        print("The longer words list is :",lsLongerWord)
+    else:
+        print("The list is empty")
+'''
+#-------------------------------------------------------------------------------------
+#Problem Statement : To implement phrase palindrome recognizer
+'''
+import string
+class palindromeRecog:
+
+    def palidromeRec(self,str1):
+        checkPaliob=palindromeRecog()
+        #notrequired=""
+        notrequired=string.punctuation + string.digits + string.whitespace
+        compressed_phrase=str1.encode('utf-8').translate(None,notrequired)
+        print(compressed_phrase)
+        result=checkPaliob.checkPalindrome(compressed_phrase)
+        return result
+
+    def checkPalindrome(self,uString):
+        if len(uString)==0:
+            return -1
+        else :
+            length=len(uString)
+            if len(uString)>=1:
+                for i in range(0,length):
+                    if uString[i]==uString[length-i-1]:
+                        return True
+                    else:
+                        return False
+
+
+       # return
+
+    def checkStr(self,str1):
+        if(len(str1))>0:
+            return 1
+        return 0
+
+if __name__== '__main__':
+    userString=input("Enter the string:")
+    palindromeRecogOb=palindromeRecog()
+    checkLength=palindromeRecogOb.checkStr(userString)
+    if checkLength>0:
+        resultPalidrome=palindromeRecogOb.palidromeRec(userString)
+        if resultPalidrome==True or resultPalidrome==1:
+            print("The string is palindrome")
+        else:
+            print("The input string is not a palindrome")
+    else:
+        print("The string is empty")
+'''
+#----------------------------------------------------------------------------------------
+# Problem statement : To check for a sentence if it is a pangram or not
+'''
+import string
+class pangram:
+    def checkPangram(self,str1):
+     lisst=list(str1)
+     alphabet_lower=list(string.ascii_lowercase)
+     print (lisst,alphabet_lower)
+     for i in lisst:
+           if i.lower() in alphabet_lower:
+               alphabet_lower.remove(i.lower())
+     return not alphabet_lower
+
+
+    def checkLength(self,str1):
+        if len(str1)>0:
+            return 1
+        return 0
+
+
+if __name__=='__main__':
+    userString=input("Enter the string :")
+    pangramOb=pangram()
+    checkLength=pangramOb.checkLength(userString)
+    if checkLength>0:
+        resultPangram=pangramOb.checkPangram(userString)
+        print(resultPangram)
+        #if resultPangram==True or resultPangram==1:
+            #print("The entered string is a pangram")
+        #else:
+           # print("The entered string is not a pangram")
+    else:
+        print("The string is empty")
+'''
+#-----------------------------------------------------------------------------------------
+#Problem Statement : 99 bottles of beer
+'''
+class ninetyNineBottles:
+    def bottles(self,str1,str2):
+        i=99
+        line1=""
+        while i>0:
+            line1=str(i)+str1+str(i)+str1[:-13]
+            line2="Take "+" one "+" down"+str2+str(i-1)+str1
+            print(line1)
+            print(line2)
+            i=i-1
+
+
+        #return
+    def checkLength(self,stringg):
+        if len(stringg)>0:
+            return 1
+        return 0
+
+if __name__=='__main__':
+    str1=" bottles of beer on the wall,"
+    str2=" pass it around , "
+    ninetyNineBottlesOb=ninetyNineBottles()
+    checkLengthstr1=ninetyNineBottlesOb.checkLength(str1)
+    checkLengthstr2=ninetyNineBottlesOb.checkLength(str2)
+    if checkLengthstr1>0:
+        if checkLengthstr2>0:
+            ninetyNineBottlesOb.bottles(str1,str2)
+        else:
+            print("String two is empty")
+    else:
+        print("String one is empty")
+
+'''
+#--------------------------------------------------------------------------
+#Problem Statement : Bilingual Lexicon (English-Swedish)
+'''
+class lexicon:
+
+    def lexEngSwe(self,dictionary,messg):
+        listt=list(dictionary.values())
+        #print(listt)
+        strMessage=[]
+        for i in dictionary:
+            for j in messg:
+                #for k in listt:
+                 if i==j.lower():
+                    #print(i,j)
+                    k=dictionary.get(j.lower())
+                    strMessage.append(k)
+        return strMessage
+
+
+
+        #return
+    def checkLengthDic(self,dictionary):
+        if len(dictionary)>0:
+            return 1
+        return 0
+    def checkLengthMesg(self,msg):
+        if len(msg)>0:
+            return 1
+        return 0
+
+if __name__=='__main__':
+    dictEngSwed={"merry":"god",
+                 "christmas":"jul",
+                 "and":"och",
+                 "happy":"gott",
+                 "new":"nytt",
+                 "year":"ar"}
+    message=["Happy","and","merry","Christmas","new","year"]
+    lexiconOb=lexicon()
+    cckLengthDc=lexiconOb.checkLengthDic(dictEngSwed)
+    cckLengthMsg=lexiconOb.checkLengthMesg(message)
+    if cckLengthDc>0:
+        if cckLengthMsg>0:
+            messageSwedish=lexiconOb.lexEngSwe(dictEngSwed,message)
+            print("The translated message is :",messageSwedish)
+        else:
+            print("The message is empty")
+    else :
+        print("The dictionary is empty")
+
+'''
+#-----------------------------------------------------------------------------------------------
+#Problem statement :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
